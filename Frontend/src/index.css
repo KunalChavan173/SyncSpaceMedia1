@@ -1,0 +1,128 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 50% 3.5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 245 90% 65%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 245 90% 65%;
+
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 245 90% 65%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 245 90% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Updated cursor behavior - white circle always visible */
+  body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="white" /></svg>') 8 8, auto;
+  }
+  
+  /* Interactive elements get transparent black circle on hover */
+  a, button, [role="button"], input, textarea, select, [tabindex]:not([tabindex="-1"]) {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /></svg>') 12 12, pointer;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .heading-xl {
+    @apply font-semibold text-3xl sm:text-4xl md:text-5xl;
+  }
+  .heading-lg {
+    @apply font-semibold text-2xl sm:text-3xl md:text-4xl;
+  }
+  .heading-md {
+    @apply font-semibold text-xl sm:text-2xl md:text-3xl;
+  }
+  .heading-sm {
+    @apply font-semibold text-lg sm:text-xl md:text-2xl;
+  }
+  .paragraph {
+    @apply text-base sm:text-lg;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground;
+  }
+  .link-hover {
+    @apply transition-all duration-300 hover:text-primary hover:translate-x-1;
+  }
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 shadow-[0_8px_16px_rgba(0,0,0,0.2)];
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-white/90 to-primary/70 bg-clip-text text-transparent;
+  }
+  .shadow-glow {
+    @apply shadow-[0_0_15px_rgba(109,40,217,0.4)];
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-glow;
+  }
+  .hover-text-gradient {
+    @apply hover:bg-gradient-to-r hover:from-primary hover:via-primary/80 hover:to-primary/60 hover:bg-clip-text hover:text-transparent;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
