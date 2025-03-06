@@ -91,8 +91,8 @@ export default function Header() {
       </header>
 
       {/* Mobile Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 md:hidden">
-        <div className="flex items-center justify-between px-4 py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 md:hidden bg-[#1A1A1A]/90 p-4">
+        <div className="flex items-center justify-between">
           <a href="#" className="text-white">
             <img 
               src={infinityLogo} 
@@ -100,7 +100,8 @@ export default function Header() {
               className="w-10 h-10"
             />
           </a>
-          
+
+          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-white/50 hover:text-white"
@@ -108,6 +109,23 @@ export default function Header() {
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <nav className="mt-4 flex flex-col bg-[#1A1A1A]/90 p-4 rounded-lg">
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-white/50 hover:text-white py-2 px-4 rounded transition-all duration-300"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        )}
+
+
 
         {/* Mobile Menu */}
         {/* ... mobile menu code stays the same ... */}
