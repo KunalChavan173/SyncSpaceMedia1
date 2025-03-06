@@ -44,7 +44,10 @@ export default function Header() {
     <>
       {/* Desktop Header */}
       <header 
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block"
+        className={cn(
+          "fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block transition-all duration-300",
+          isScrolled ? "bg-[#1A1A1A]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] rounded-full px-6" : "bg-transparent"
+        )}
       >
         <div 
           className="flex items-center bg-[#1A1A1A]/90 rounded-full px-6 
@@ -91,7 +94,9 @@ export default function Header() {
       </header>
 
       {/* Mobile Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 md:hidden bg-[#1A1A1A]/90 p-4">
+      <header className={cn(
+  "fixed top-0 left-0 right-0 z-50 md:hidden p-4 transition-all duration-300",
+  mobileMenuOpen ? "bg-[#1A1A1A]/90" : "bg-transparent")}>
         <div className="flex items-center justify-between">
           <a href="#" className="text-white">
             <img 
@@ -114,11 +119,12 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="mt-4 flex flex-col bg-[#1A1A1A]/90 p-4 rounded-lg">
             {navLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-white/50 hover:text-white py-2 px-4 rounded transition-all duration-300"
-              >
+                 <a
+                 key={item.label}
+                 href={item.href}
+                 className="text-white/50 hover:text-white py-2 px-4 rounded transition-all duration-300"
+                 onClick={() => setMobileMenuOpen(false)} // Closes menu on click
+               >
                 {item.label}
               </a>
             ))}
