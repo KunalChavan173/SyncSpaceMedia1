@@ -110,7 +110,7 @@ export default function Contact() {
     });
 
     try {
-      const response = await fetch('http://localhost:8081/api/contact', {
+      const response = await fetch('https://syncspacemedia1-backend.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
