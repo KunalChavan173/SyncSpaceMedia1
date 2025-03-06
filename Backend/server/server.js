@@ -13,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-const MONGO_URI = "mongodb+srv://heyitshere173:heyitsme173@cluster0.pxc1i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+//const MONGO_URI = "mongodb+srv://heyitshere173:heyitsme173@cluster0.pxc1i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.set('debug', true);
 
