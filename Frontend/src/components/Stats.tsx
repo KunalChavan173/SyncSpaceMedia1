@@ -70,7 +70,7 @@ export default function Stats() {
           
           {/* Heading */}
           <FadeUp>
-            <h2 className="text-5xl md:text-6xl text-center font-medium text-white max-w-5xl mx-auto leading-tight mb-24 relative z-10">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl text-center font-medium text-white max-w-5xl mx-auto leading-tight mb-24 relative z-10">
               At{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] to-[#2563EB]">
                 Sync Space Media
