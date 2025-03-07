@@ -42,7 +42,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Desktop Header */}
+      {/* ✅ Desktop Header (Hidden on Mobile) */}
       <header 
         className={cn(
           "fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block transition-all duration-300",
@@ -80,7 +80,7 @@ export default function Header() {
                 className="text-white/50 hover:text-white px-4 py-3 text-sm 
                 transition-all duration-300 
                 relative 
-                after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2
+                after:absolute after:bottom-0 after:left-0
                 after:w-0 after:h-0.5 after:bg-[#3B82F6]
                 after:transition-all after:duration-300
                 hover:text-white
@@ -93,10 +93,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Header */}
-      <header className={cn(
-  "fixed top-0 left-0 right-0 z-50 md:hidden p-4 transition-all duration-300",
-  mobileMenuOpen ? "bg-[#1A1A1A]/90" : "bg-transparent")}>
+      {/* ✅ Mobile Header (Hidden on Desktop) */}
+      <header className="fixed top-0 left-0 right-0 z-50 md:hidden p-4 bg-[#1A1A1A]/90">
         <div className="flex items-center justify-between">
           <a href="#" className="text-white">
             <img 
@@ -119,22 +117,17 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="mt-4 flex flex-col bg-[#1A1A1A]/90 p-4 rounded-lg">
             {navLinks.map((item) => (
-                 <a
-                 key={item.label}
-                 href={item.href}
-                 className="text-white/50 hover:text-white py-2 px-4 rounded transition-all duration-300"
-                 onClick={() => setMobileMenuOpen(false)} // Closes menu on click
-               >
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-white/50 hover:text-white py-2 px-4 rounded transition-all duration-300"
+                onClick={() => setMobileMenuOpen(false)} // Closes menu on click
+              >
                 {item.label}
               </a>
             ))}
           </nav>
         )}
-
-
-
-        {/* Mobile Menu */}
-        {/* ... mobile menu code stays the same ... */}
       </header>
     </>
   );
