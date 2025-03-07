@@ -45,16 +45,11 @@ export default function Header() {
       {/* ✅ Desktop Header (Hidden on Mobile) */}
       <header 
         className={cn(
-          "fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block transition-all duration-300",
-          isScrolled ? "bg-[#1A1A1A]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] rounded-full px-6" : "bg-transparent"
+          "fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block transition-all duration-300 px-6 rounded-full",
+          isScrolled ? "bg-[#1A1A1A]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)]" : "bg-transparent"
         )}
       >
-        <div 
-          className="flex items-center bg-[#1A1A1A]/90 rounded-full px-6 
-          border border-white/10 
-          shadow-[0_4px_20px_rgba(0,0,0,0.2)]
-          backdrop-blur-sm"
-        >
+        <div className="flex items-center">
           {/* Logo */}
           <a 
             href="#" 
