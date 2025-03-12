@@ -112,6 +112,7 @@ export default function Contact() {
     }));
 
   
+    console.time('API Call'); 
     try {
       const response = await fetch('https://syncspacemedia1-backend.onrender.com/api/contact', {
         method: 'POST',
@@ -120,7 +121,8 @@ export default function Contact() {
         },
         body: JSON.stringify(formData)
       });
-  
+      console.timeEnd('API Call'); 
+      
       const result = await response.json();
   
       if (response.ok) {
