@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FadeUp } from "./ui/Motion";
 import { cn } from "@/lib/utils";
 import countries from "./data";
@@ -50,6 +50,7 @@ export default function Contact() {
     return re.test(String(email).toLowerCase());
   };
 
+  const clearMessageTimeout = useRef<NodeJS.Timeout | null>(null);
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,13 +104,14 @@ export default function Contact() {
     }
 
     // Reset status and start loading
-    setSubmitStatus({ 
-      loading: true, 
-      success: null, 
-      message: '' 
-    });
+    setSubmitStatus(prev => ({
+      ...prev,
+      loading: true,
+      success: null,
+      message: ''
+    }));
 
-    console.time('API Call'); // Start measuring time
+  
     try {
       const response = await fetch('https://syncspacemedia1-backend.onrender.com/api/contact', {
         method: 'POST',
@@ -118,19 +120,16 @@ export default function Contact() {
         },
         body: JSON.stringify(formData)
       });
-      console.timeEnd('API Call'); // End measuring time
-      
+  
       const result = await response.json();
-
+  
       if (response.ok) {
-        // Success handling
         setSubmitStatus({
           loading: false,
           success: true,
           message: result.message || 'Thank you for reaching out!'
         });
-
-        // Reset form
+  
         setFormData({
           name: '',
           instagram: '',
@@ -140,9 +139,14 @@ export default function Contact() {
           phone: '',
           message: ''
         });
-
-        // Clear message after 3 seconds
-        setTimeout(() => {
+  
+        // ✅ Step 2: Clear previous timeout before setting a new one
+        if (clearMessageTimeout.current) {
+          clearTimeout(clearMessageTimeout.current);
+        }
+  
+        // ✅ Set a new timeout and store the ID
+        clearMessageTimeout.current = setTimeout(() => {
           setSubmitStatus(prev => ({ ...prev, message: '' }));
         }, 3000);
       } else {
