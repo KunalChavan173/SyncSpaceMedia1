@@ -29,7 +29,7 @@ const AnimatedBackground = () => {
 
 const stats = [
   {
-    number: "200M+",
+    number: "500M+",
     label: "views generated"
   },
   {
